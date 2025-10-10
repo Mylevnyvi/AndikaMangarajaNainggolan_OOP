@@ -77,12 +77,12 @@ public class PlayerService {
         playerRepository.delete(player);
     }
 
-    public Player updatePlayerStats(UUID playerId, Integer scoreId, Integer coinsCollected, Integer distanceTravelled) {
+    public Player updatePlayerStats(UUID playerId, Integer scoreValue, Integer coinsCollected, Integer distanceTravelled) {
         Player player = playerRepository.findById(playerId)
                 .orElseThrow(() -> new RuntimeException("Player not found with ID: " + playerId));
 
         // Update high score if this score is higher
-        player.updateHighScore(scoreId);
+        player.updateHighScore(scoreValue);
 
         // Add coins and distance to totals
         player.addCoins(coinsCollected);

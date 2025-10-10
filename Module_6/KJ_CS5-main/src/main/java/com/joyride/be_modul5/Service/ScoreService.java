@@ -75,7 +75,7 @@ public class ScoreService {
     }
 
     public Score updateScore(UUID scoreId) {
-        Score existingScore = scoreRepository.findById(scoreId);
+        Optional<Score> existingScore = scoreRepository.findById(scoreId);
         playerService.updatePlayerStats(scoreId);
         return scoreRepository.save(existingScore);
     }

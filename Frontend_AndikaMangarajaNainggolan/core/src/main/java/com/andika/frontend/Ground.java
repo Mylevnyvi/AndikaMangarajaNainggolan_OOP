@@ -38,4 +38,5 @@ public class Ground {
         shaperenderer.setColor(0.5f, 0.5f, 0.5f, 1f);
         shaperenderer.rect(collider.x, collider.y, collider.width, collider.height);
     }
+
 }

@@ -30,9 +30,20 @@ public class Player {
         this.velocity = new Vector2(baseSpeed, 0f);
         this.collider = new Rectangle(position.x, position.y, width, height);
     }
+
+    public Vector2 getPosition() {return position;}
+    public Rectangle getCollider() {return collider;}
+
     private void updateDistanceAndSpeed(float delta) {
         distanceTraveled += velocity.x * delta;
     }
+
+     private void updateCollider() {
+        collider.set(position.x, position.y, width, height);
+     }
+
+     public float getWidth() {return width;}
+     public float getHeight() {return height;}
 
     private void fly(float delta) {
         velocity.y += force * delta;
@@ -53,11 +64,41 @@ public class Player {
     public void update(float delta, boolean isFlying) {
         updateDistanceAndSpeed(delta);
         applyGravity((delta));
-    if (isFlying) {
+        if (isFlying) {
         fly(delta);
     }
     updatePosition(delta);
-
+        updateCollider();
     }
+
+    public float getDistanceTraveled() {return distanceTraveled/10f;}
+
+    public void checkBoundaries(Ground ground, float ceilingY) {
+
+        if (ground.isColliding(collider)) {
+            position.y = ground.getTopY();
+            velocity.y = 0f;
+            updateCollider();
+        }
+
+        if (position.y + height > ceilingY) {
+            position.y = ceilingY - height;
+            velocity.y = 0f;
+            updateCollider();
+        }
+
+        if (position.y < 0f) {
+            position.y = 0f;
+            velocity.y = 0f;
+            updateCollider();
+        }
+    }
+
+    public void renderShape(ShapeRenderer shapeRenderer){
+        shapeRenderer.setColor(2f, 0.8f, 0.6f, 0.4f);
+        shapeRenderer.rect(position.x, position.y, width, height);
+    }
+
+
 }
 

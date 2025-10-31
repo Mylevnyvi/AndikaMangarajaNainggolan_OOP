@@ -18,11 +18,24 @@ public class Ground {
     public Rectangle collider;
 
     public  Ground(){
-        float width = Gdx.graphics.getWidth();
+        float width = Gdx.graphics.getWidth() * 2f;
         collider = new Rectangle(0, 0, 0, GROUND_HEIGHT);
     }
 
     public void update(float cameraX) {
+        float x = cameraX - Gdx.graphics.getWidth() / 2f - 500f;
+        float width = Gdx.graphics.getWidth() + 1000f;
+        collider.set(x, 0f, width, GROUND_HEIGHT);
+    }
+    public boolean isColliding(Rectangle playerCollider) {
+        return collider.overlaps(playerCollider);
+    }
+    public float getTopY() {
+        return GROUND_HEIGHT;
+    }
 
+    public void renderShape(ShapeRenderer shapeRenderer) {
+        shapeRenderer.setColor(0.5f, 0.5f, 0.5f, 1f);
+        shapeRenderer.rect(collider.x, collider.y, collider.width, collider.height);
     }
 }

@@ -54,8 +54,10 @@ public class Player {
         updateDistanceAndSpeed(delta);
         applyGravity((delta));
     if (isFlying) {
-
+        fly(delta);
     }
+    updatePosition(delta);
+
     }
 }
 

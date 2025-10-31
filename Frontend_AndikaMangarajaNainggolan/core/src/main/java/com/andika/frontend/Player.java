@@ -30,10 +30,32 @@ public class Player {
         this.velocity = new Vector2(baseSpeed, 0f);
         this.collider = new Rectangle(position.x, position.y, width, height);
     }
+    private void updateDistanceAndSpeed(float delta) {
+        distanceTraveled += velocity.x * delta;
+    }
+
+    private void fly(float delta) {
+        velocity.y += force * delta;
+    }
+
+    private void updatePosition(float delta) {
+        position.x += velocity.x * delta;
+        position.y += velocity.y * delta;
+    }
+
+    private void applyGravity(float delta) {
+        velocity.y -= gravity * delta;
+        velocity.x = baseSpeed;
+        if (velocity.y > maxVerticalSpeed) velocity.y = maxVerticalSpeed;
+        if (velocity.y < -maxVerticalSpeed) velocity.y = -maxVerticalSpeed;
+    }
 
     public void update(float delta, boolean isFlying) {
+        updateDistanceAndSpeed(delta);
+        applyGravity((delta));
+    if (isFlying) {
 
-
+    }
     }
 }
 

@@ -1,15 +1,5 @@
 package com.andika.frontend;
 
-import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.ScreenUtils;
-import com.badlogic.gdx.math.Rectangle;
 
 public class GameManager {
     private static GameManager instance;
@@ -26,4 +16,21 @@ public class GameManager {
         return instance;
     }
 
+    public void startGame() {
+        score = 0;
+        gameActive = true;
+        System.out.println("Game Started Sia!");
+    }
+
+    public void setScore(int newScore){
+        if (gameActive) {
+        score = newScore;
+        }
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public boolean isGameActive() {return gameActive;}
 }

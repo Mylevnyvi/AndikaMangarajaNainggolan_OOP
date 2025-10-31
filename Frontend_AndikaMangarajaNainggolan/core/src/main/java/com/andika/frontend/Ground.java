@@ -34,8 +34,8 @@ public class Ground {
         return GROUND_HEIGHT;
     }
 
-    public void renderShape(ShapeRenderer shapeRenderer) {
-        shapeRenderer.setColor(0.5f, 0.5f, 0.5f, 1f);
-        shapeRenderer.rect(collider.x, collider.y, collider.width, collider.height);
+    public void renderShape(ShapeRenderer shaperenderer) {
+        shaperenderer.setColor(0.5f, 0.5f, 0.5f, 1f);
+        shaperenderer.rect(collider.x, collider.y, collider.width, collider.height);
     }
 }

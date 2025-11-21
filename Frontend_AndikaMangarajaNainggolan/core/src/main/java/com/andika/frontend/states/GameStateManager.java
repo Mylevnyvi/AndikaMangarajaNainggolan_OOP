@@ -1,0 +1,49 @@
+package com.andika.frontend.states;
+
+
+import com.andika.frontend.states.GameState;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+import java.util.Stack;
+
+public class GameStateManager {
+    private final Stack<GameState> states;
+
+
+
+    public GameStateManager(){
+        this.states = new Stack<>();
+    }
+
+public void push(GameState state){
+        states.push(state);
+}
+
+public void pop() {
+        if (!states.isEmpty()){
+            GameState gameState = states.pop();
+            gameState.dispose();
+        }
+}
+
+public void set(GameState state){
+    if (!states.isEmpty()){
+        pop();
+    }
+    push(state);
+}
+
+public void update(float delta) {
+        if (!states.isEmpty()){
+            states.peek().update(delta);
+        }
+
+    }
+public void render(SpriteBatch batch) {
+    if (!states.isEmpty()){
+        states.peek().render(batch);
+    }
+
+  }
+
+}

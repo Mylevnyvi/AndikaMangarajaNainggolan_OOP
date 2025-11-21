@@ -1,7 +1,7 @@
-package com.nama.frontend.factories;
+package com.andika.frontend.factories;
 
 import java.util.*;
-import com.nama.frontend.obstacles.BaseObstacle;
+import com.andika.frontend.obstacles.BaseObstacle;
 
 public class ObstacleFactory {
 
@@ -48,7 +48,7 @@ public class ObstacleFactory {
         if (weightedCreators.isEmpty()) {
             throw new IllegalStateException("No obstacle creators registered");
         }
-        
+
         ObstacleCreator creator = selectWeightedCreator();
         return creator.create(groundTopY, spawnX, playerHeight, random);
     }
@@ -56,14 +56,14 @@ public class ObstacleFactory {
     private ObstacleCreator selectWeightedCreator() {
         int randomValue = random.nextInt(totalWeight);
         int currentWeight = 0;
-        
+
         for (WeightedCreator wc : weightedCreators) {
             currentWeight += wc.weight;
             if (randomValue < currentWeight) {
                 return wc.creator;
             }
         }
-        
+
         return weightedCreators.get(0).creator;
     }
 

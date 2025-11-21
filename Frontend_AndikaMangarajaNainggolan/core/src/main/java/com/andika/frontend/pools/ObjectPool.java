@@ -1,4 +1,4 @@
-package com.nama.frontend.pools;
+package com.andika.frontend.pools;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,10 +6,10 @@ import java.util.List;
 public abstract class ObjectPool<T> {
     private List<T> available = new ArrayList<>();
     private List<T> inUse = new ArrayList<>();
-    
+
     protected abstract T createObject();
     protected abstract void resetObject(T object);
-    
+
     public T obtain() {
         T object;
         if (available.isEmpty()) {
@@ -20,14 +20,14 @@ public abstract class ObjectPool<T> {
         inUse.add(object);
         return object;
     }
-    
+
     public void release(T object) {
         if (inUse.remove(object)) {
             resetObject(object);
             available.add(object);
         }
     }
-    
+
     public void releaseAll() {
         for (T object : inUse) {
             resetObject(object);
@@ -35,11 +35,11 @@ public abstract class ObjectPool<T> {
         }
         inUse.clear();
     }
-    
+
     public List<T> getInUse() {
         return new ArrayList<>(inUse);
     }
-    
+
     public int getActiveCount() {
         return inUse.size();
     }

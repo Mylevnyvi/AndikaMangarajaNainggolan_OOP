@@ -1,8 +1,8 @@
-package com.nama.frontend.pools;
+package com.andika.frontend.pools;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
-import com.nama.frontend.obstacles.VerticalLaser;
+import com.andika.frontend.obstacles.VerticalLaser;
 
 public class VerticalLaserPool extends ObjectPool<VerticalLaser> {
 
@@ -16,7 +16,7 @@ public class VerticalLaserPool extends ObjectPool<VerticalLaser> {
         obstacle.setPosition(Gdx.graphics.getWidth(), 0);
         obstacle.setActive(false);
     }
-    
+
     public VerticalLaser obtain(Vector2 position, int length) {
         VerticalLaser obstacle = super.obtain();
         obstacle.initialize(position, length);

@@ -1,4 +1,4 @@
-package com.nama.frontend.obstacles;
+package com.andika.frontend.obstacles;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
@@ -36,15 +36,15 @@ public abstract class BaseObstacle {
     public boolean isOffScreenCamera(float cameraLeftEdge) {
         return position.x + getRenderWidth() < cameraLeftEdge - 100; // Buffer behind camera
     }
-    
+
     public void setActive(boolean active) {
         this.active = active;
     }
-    
+
     public boolean isActive() {
         return active;
     }
-    
+
     public void setPosition(float x, float y) {
         position.set(x, y);
         updateCollider();

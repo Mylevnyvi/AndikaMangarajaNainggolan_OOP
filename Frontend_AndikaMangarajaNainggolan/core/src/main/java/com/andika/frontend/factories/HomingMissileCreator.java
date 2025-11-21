@@ -1,10 +1,10 @@
-package com.nama.frontend.factories;
+package com.andika.frontend.factories;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
-import com.nama.frontend.obstacles.BaseObstacle;
-import com.nama.frontend.obstacles.HomingMissile;
-import com.nama.frontend.pools.HomingMissilePool;
+import com.andika.frontend.obstacles.BaseObstacle;
+import com.andika.frontend.obstacles.HomingMissile;
+import com.andika.frontend.pools.HomingMissilePool;
 import java.util.List;
 import java.util.Random;
 

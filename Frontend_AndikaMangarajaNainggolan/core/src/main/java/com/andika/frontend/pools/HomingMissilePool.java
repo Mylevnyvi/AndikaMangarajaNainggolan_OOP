@@ -1,7 +1,7 @@
-package com.nama.frontend.pools;
+package com.andika.frontend.pools;
 
 import com.badlogic.gdx.math.Vector2;
-import com.nama.frontend.obstacles.HomingMissile;
+import com.andika.frontend.obstacles.HomingMissile;
 
 public class HomingMissilePool extends ObjectPool<HomingMissile> {
 

@@ -1,28 +1,28 @@
-package com.nama.frontend.factories;
+package com.andika.frontend.factories;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
-import com.nama.frontend.obstacles.BaseObstacle;
-import com.nama.frontend.obstacles.HorizontalLaser;
-import com.nama.frontend.pools.HorizontalLaserPool;
+import com.andika.frontend.obstacles.BaseObstacle;
+import com.andika.frontend.obstacles.HorizontalLaser;
+import com.andika.frontend.pools.HorizontalLaserPool;
 import java.util.List;
 import java.util.Random;
 
 class HorizontalLaserCreator implements ObstacleFactory.ObstacleCreator {
     private static final float MIN_LENGTH = 100f;
     private static final float MAX_LENGTH = 300f;
-    
+
     private final HorizontalLaserPool pool = new HorizontalLaserPool();
 
     @Override
     public BaseObstacle create(float groundTopY, float spawnX, float playerHeight, Random rng) {
         float obstacleLength = MIN_LENGTH + (rng.nextFloat() * (MAX_LENGTH - MIN_LENGTH));
-        
+
         float minY = groundTopY + playerHeight;
         float maxY = Gdx.graphics.getHeight() - playerHeight;
         if (maxY < minY) maxY = minY;
         float randomY = minY + rng.nextFloat() * Math.max(0, maxY - minY);
-        
+
         return pool.obtain(new Vector2(spawnX, randomY), (int) obstacleLength);
     }
 

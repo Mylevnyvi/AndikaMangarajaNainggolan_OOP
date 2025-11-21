@@ -1,8 +1,8 @@
-package com.nama.frontend.pools;
+package com.andika.frontend.pools;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
-import com.nama.frontend.obstacles.HorizontalLaser;
+import com.andika.frontend.obstacles.HorizontalLaser;
 
 public class HorizontalLaserPool extends ObjectPool<HorizontalLaser> {
 
@@ -16,7 +16,7 @@ public class HorizontalLaserPool extends ObjectPool<HorizontalLaser> {
         obstacle.setPosition(Gdx.graphics.getWidth(), 0);
         obstacle.setActive(false);
     }
-    
+
     public HorizontalLaser obtain(Vector2 position, int length) {
         HorizontalLaser obstacle = super.obtain();
         obstacle.initialize(position, length);
